@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connect 4 game</title>
+</head>
+<body>
+    <h1>Play Connect 4</h1>
+<table border="1">
+    {% for cell in board %}
+    <tr>
+        {% for cell in row %}
+        <td style="width: 50px;height:50px; text-align:center;">
+            {{ cell }}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+    <br>
+{% for i in range(7) %}
+    <a href="/move/{{ i }}">Drop in {{ i }}</a>
+{% endfor %}
+</body>
+</html>
+</DOCTYPE>
