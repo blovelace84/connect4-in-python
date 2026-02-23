@@ -1,26 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Connect 4 game</title>
+    <title>Connect 4</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: #f0f0f0;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid #333;
+        }
+
+        .X {
+            background-color: red;
+        }
+
+        .O {
+            background-color: yellow;
+        }
+
+        .button-row a {
+            padding: 10px 15px;
+            background-color: blue;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .button-row a:hover {
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
-    <h1>Play Connect 4</h1>
-<table border="1">
-    {% for cell in board %}
+
+<h1>Connect 4</h1>
+
+<table>
+    {% for row in board %}
     <tr>
         {% for cell in row %}
-        <td style="width: 50px;height:50px; text-align:center;">
-            {{ cell }}
-        </td>
+        <td class="{{ cell }}"></td>
         {% endfor %}
     </tr>
     {% endfor %}
 </table>
 
-    <br>
-{% for i in range(7) %}
-    <a href="/move/{{ i }}">Drop in {{ i }}</a>
-{% endfor %}
+<div class="button-row">
+    {% for i in range(7) %}
+        <a href="/move/{{ i }}">Drop {{ i }}</a>
+    {% endfor %}
+</div>
+
 </body>
 </html>
-</DOCTYPE>
