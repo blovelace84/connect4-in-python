@@ -4,14 +4,14 @@ app = Flask(__name__)
 
 ROWS = 6
 COLS = 7
-board = [[" "]*COLS for _ in range(ROWS)]
+board = [[""]*COLS for _ in range(ROWS)]
 player = 1
 
 def drop_piece(col):
     global player
     for r in reversed(range(ROWS)):
-        if board[r][col] == " ":
-            board[r][col] =  "X" if player == 1 else "0"
+        if board[r][col] == "":
+            board[r][col] = "X" if player == 1 else "O"
             player = 2 if player == 1 else 1
             break
 
