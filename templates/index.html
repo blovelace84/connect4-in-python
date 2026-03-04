@@ -42,12 +42,39 @@
         .button-row a:hover {
             background-color: darkblue;
         }
+        .controls{
+            margin-top: 20px;
+        }
+
+        .reset-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.reset-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.reset-btn:active {
+    transform: scale(0.95);
+}
+
+
     </style>
 </head>
 <body>
 
 <h1>Connect 4</h1>
-
+{% if winner %}
+    <h2 style="color: green;">{{ winner }}</h2>
+{% endif %}
 <table>
     {% for row in board %}
     <tr>
@@ -63,6 +90,8 @@
         <a href="/move/{{ i }}">Drop {{ i }}</a>
     {% endfor %}
 </div>
-
+<div class="controls">
+    <a href="/reset" class="reset-btn">🔄 Reset Game</a>
+</div>
 </body>
 </html>
