@@ -14,13 +14,16 @@ def drop_piece(col):
     if winner:
         return
 
+    if col < 0 or col >= COLS:
+        return
+
     for r in reversed(range(ROWS)):
         if board[r][col] == "":
-            piece = "X" if player == 1 else "0"
+            piece = "X" if player == 1 else "O"
             board[r][col] = piece
 
             if check_win(piece):
-                winner = f"player {player} wins!"
+                winner = f"Player {player} Wins!"
 
             player = 2 if player == 1 else 1
             break
@@ -57,6 +60,9 @@ def home():
 
 @app.route("/move/<int:col>")
 def move(col):
+    if col < 0 or col >= COLS:
+        return redirect("/")
+
     drop_piece(col)
     return redirect("/")
 
